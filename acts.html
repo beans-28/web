@@ -153,12 +153,12 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    // Function to calculate age from birthdate
+    // Function to auto calc age frm bday
     function calculateAge(birthdate) {
         const today = new Date();
         const birth = new Date(birthdate);
         
-        // Check if birthdate is valid
+        // Checking if bday is valdi
         if (isNaN(birth.getTime())) {
             return '';
         }
@@ -166,7 +166,7 @@
         let age = today.getFullYear() - birth.getFullYear();
         const monthDiff = today.getMonth() - birth.getMonth();
         
-        // If birthday hasn't occurred this year
+        // if bday hasn;t occured 
         if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
             age--;
         }
@@ -175,7 +175,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-        // Auto-calculate age for head of family
+        // auto calc age for head
         const birthdateField = document.getElementById('birthdate');
         const ageField = document.getElementById('age');
         
