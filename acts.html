@@ -41,11 +41,11 @@
                         <input type="number" id="age" name="age" required readonly>
                     </div>
                     <div class="sec03">
-                        <label for="sex">Sex</label>
-                        <select id="sex" name="sex" required>
+                        <label for="sex1">Sex</label>
+                        <select id="sex1" name="sex1" required>
                             <option value="" disabled selected>Choose</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
                         </select>
                     </div>
                 </div>
@@ -153,12 +153,12 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    // calc age frm bday
+    // Function to calculate age from birthdate
     function calculateAge(birthdate) {
         const today = new Date();
         const birth = new Date(birthdate);
         
-        // checking if bday is valid
+        // Check if birthdate is valid
         if (isNaN(birth.getTime())) {
             return '';
         }
@@ -166,7 +166,7 @@
         let age = today.getFullYear() - birth.getFullYear();
         const monthDiff = today.getMonth() - birth.getMonth();
         
-        // if bday hasnt occured this yr
+        // If birthday hasn't occurred this year
         if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
             age--;
         }
@@ -175,7 +175,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-        // Age auto calc head fam
+        // Auto-calculate age for head of family
         const birthdateField = document.getElementById('birthdate');
         const ageField = document.getElementById('age');
         
@@ -205,24 +205,15 @@
                 <label for="relation-${memberCount}">Relation to Head</label>
                 <input type="text" id="relation-${memberCount}" name="relation[]" required>
 
-                <div class="sec0">
-                    <div class="sec01">
-                        <label for="birthdate-${memberCount}">Birthdate</label>
-                        <input type="date" id="birthdate-${memberCount}" name="birthdate[]">
-                    </div>
-                    <div class="sec02">
-                        <label for="age-${memberCount}">Age</label>
-                        <input type="number" id="age-${memberCount}" name="age[]" required readonly>
-                    </div>
-                    <div class="sec03">
-                        <label for="sex-${memberCount}">Sex</label>
-                        <select id="sex-${memberCount}" name="sex[]" required>
-                            <option value="" disabled selected>Choose</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
-                    </div>
-                </div>
+                <label for="age-${memberCount}">Age</label>
+                <input type="number" id="age-${memberCount}" name="age[]" required>
+
+                <label for="sex-${memberCount}">Sex</label>
+                <select id="sex-${memberCount}" name="sex[]" required>
+                    <option value="" disabled selected>Choose</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
 
                 <label for="educ-${memberCount}">Educational Attainment</label>
                 <input type="text" id="educ-${memberCount}" name="educ[]" required>
@@ -238,15 +229,6 @@
             newForm.querySelector('.delete-btn').addEventListener('click', function() {
                 container.removeChild(newForm);
                 memberCount--;
-            });
-            
-            // Add age calc for fam membr
-            const memberBirthdateField = newForm.querySelector(`#birthdate-${memberCount}`);
-            const memberAgeField = newForm.querySelector(`#age-${memberCount}`);
-            
-            memberBirthdateField.addEventListener('change', function() {
-                const calculatedAge = calculateAge(this.value);
-                memberAgeField.value = calculatedAge;
             });
             
             container.appendChild(newForm);
