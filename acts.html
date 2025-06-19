@@ -1,230 +1,259 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DAFAC Form</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styles2.css">
-    
 </head>
 <body>
 
-
- <section class="front">
+<section class="front">
     <div class="content">  
-    <img src="pic/logo.webp" alt="dswdlogo">
-      <h3>Department of Social Welfare and Development</h3>
-      <h3>Disaster Assistance Family Access Card</h3>
+        <img src="pic/logo.webp" alt="dswdlogo">
+        <h3>Department of Social Welfare and Development</h3>
+        <h3>Disaster Assistance Family Access Card</h3>
     </div>
- </section>
+</section>
 
 <div class="separate">
-<p>separate</p>
+    <p>separate</p>
 </div>
 
 <section class="upper">
 <form action="infomanback.php" method="POST">
- <section class="supersec">
-  <section class="fields">
+    <section class="supersec">
+        <section class="fields">
+            <!-- Head of the Family Container -->
+            <div class="form-container">
+                <h2>Personal Information</h2> 
+                <label for="head">Full Name</label>
+                <input type="text" id="head" name="head" required>
 
-    <!-- Head of the Family Container -->
+                <div class="sec0">
+                    <div class="sec01">
+                        <label for="birthdate">Birthdate</label>
+                        <input type="date" id="birthdate" name="birthdate" required>
+                    </div>
+                    <div class="sec02">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age" required readonly>
+                    </div>
+                    <div class="sec03">
+                        <label for="sex">Sex</label>
+                        <select id="sex" name="sex" required>
+                            <option value="" disabled selected>Choose</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                </div>
 
-   <div class="form-container">
-    <h2>Personal Information</h2> 
-      <label for="head">Full Name</label>
-      <input type="text" id="head" name="head" required>
+                <label for="birthplace">Birthplace</label>
+                <input type="text" id="birthplace" name="birthplace" required>
+                  
+                <label for="mother">Mother's Maiden Name</label>
+                <input type="text" id="mother" name="mother" required>
 
-    <div class="sec0">
-     <div class="sec01">
-      <label for="birthdate">Birthdate</label>
-      <input type="date" id="birthdate" name="birthdate" required>
-     </div>
-     <div class="sec02">
-      <label for="age">Age</label>
-      <input type="number" id="age" name="age" required>
-     </div>
-     <div class="sec03">
-       <label for="sex">Sex</label>
-      <select id="sex" name="sex" required>
-        <option value="" disabled selected>Choose</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </select>
-     </div>
-    </div>
+                <label for="job">Occupation</label>
+                <input type="text" id="job" name="job" required>
 
-    <label for="birthplace">Birthplace</label>
-    <input type="text" id="birthplace" name="birthplace" required>
-      
-    <label for="mother">Mother's Maiden Name</label>
-    <input type="text" id="mother" name="mother" required>
+                <label for="income">Monthly Family Income</label>
+                <input class="no-spin" type="number" id="income" name="income" required>
 
-    <label for="job">Occupation</label>
-    <input type="text" id="job" name="job" required>
+                <label for="idtype">ID Presented</label>
+                <input type="text" id="idtype" name="idtype" required>
 
-    <label for="income">Monthly Family Income</label>
-    <input class="no-spin" type="number" id="income" name="income" required>
+                <label for="idnum">ID Card Number</label>
+                <input type="text" id="idnum" name="idnum" required>
 
-    <label for="idtype">ID Presented</label>
-    <input type="text" id="idtype" name="idtype" required>
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" required>
+                  
+                <label for="contact">Contact Number</label>
+                <input type="tel" id="contact" name="contact" required>
+              
+                <div class="sec0">
+                    <div class="sec01">
+                        <label for="4ps">4ps Beneficiary?</label>
+                        <label class="op">
+                            <input type="radio" name="response" value="yes">
+                            <span>Yes</span>
+                        </label>
+                        <label class="op">
+                            <input type="radio" name="response" value="no">
+                            <span>No</span>
+                        </label>
+                    </div>
+                    <div class="sec02" id="sec02">
+                        <label for="iptype">IP-Type of Ethnicity</label>
+                        <input type="text" id="iptype" name="iptype" required>
+                    </div>
+                </div> 
+            </div>
 
-    <label for="idnum">ID Card Number</label>
-    <input type="text" id="idnum" name="idnum" required>
+            <!-- Family Members -->
+            <div id="family-members-container"></div>
+            <div class="butt1">
+                <button type="button" id="add-member-btn">Add Family Member</button>
+                <button type="button" id="Topbot">Go To Top</button>
+            </div>
+        </section>
 
-    <label for="address">Address</label>
-    <input type="text" id="address" name="address" required>
-      
-    <label for="contact">Contact Number</label>
-    <input type="tel" id="contact" name="contact" required>
-  
-   <div class="sec0">
-    <div class="sec01">
-     <label for="4ps">4ps Beneficiary?</label>
-     <label class="op">
-         <input type="radio" name="response" value="yes">
-         <span>Yes</span>
-    </label>
-    <label class="op">
-         <input type="radio" name="response" value="no">
-          <span>No</span>
-    </label>
-   </div>
-   <div class="sec02" id="sec02">
-    <label for="iptype">IP-Type of Ethnicity</label>
-    <input type="text" id="iptype" name="iptype" required>
-   </div>
-  </div> 
-   
-  </div>
+        <!-- Evacuation Container -->
+        <section class="fields0">
+            <div id="form3" class="form-container">
+                <h2>Evacuation</h2>
+                <label for="region">Region</label>
+                <input type="text" id="region" name="region" required>
+                
+                <label for="province">Province</label>
+                <input type="text" id="province" name="province" required>
+                
+                <label for="district">District</label>
+                <input type="text" id="district" name="district" required>
 
-  <!-- Family Members -->
+                <label for="city">City/Municipality</label>
+                <input type="text" id="city" name="city" required>
 
-  <div  id="family-members-container">  </div>
-  <div class="butt1">
-      <button id="add-member-btn">Add Family Member</button>
-      <button id="Topbot">Go To Top</button>
-  </div>
- 
-</section>
+                <label for="Barangay">Barangay</label>
+                <input type="text" id="barangay" name="barangay" required>
+                
+                <label for="evaccenter">Evacuation Center</label>
+                <input type="text" id="evaccenter" name="evaccenter" required>
+            </div>
 
- <!-- Evacuation Container -->
+            <!-- Vulnerabilities container -->
+            <div id="form4" class="form-container">
+                <h2>Number of vulnerabilities</h2>
+                <label for="old">Number of Older Persons</label>
+                <input type="number" id="old" name="old" required>
+                
+                <label for="pregnant">Number of Pregnant Women</label>
+                <input type="number" id="pregnant" name="pregnant" required>
+                
+                <label for="pwd">Number of PWDs and With Medical Conditions</label>
+                <input type="number" id="pwd" name="pwd" required>
 
- <section class="fields0">
-  <div id="form3" class="form-container">
-   
-    <h2>Evacuation</h2>
-      <label for="region">Region</label>
-      <input type="text" id="region" name="region" required>
-      
-      <label for="province">Province</label>
-      <input type="text" id="province" name="province" required>
-      
-      <label for="district">District</label>
-      <input type="text" id="district" name="district" required>
-
-      <label for="city">City/Municipality</label>
-      <input type="text" id="city" name="city" required>
-
-      <label for="Barangay">Barangay</label>
-      <input type="text" id="barangay" name="barangay" required>
-      
-      <label for="evaccenter">Evacuation Center</label>
-      <input type="text" id="evaccenter" name="evaccenter" required>
- 
-  </div>
-
-
-    <!-- Vulnerabilities container -->
-   <div id="form4" class="form-container">
-    <h2>Number of vulnerabilities</h2>
-      <label for="old">Number of Older Persons</label>
-      <input type="number" id="old" name="old" required>
-      
-      <label for="pregnant">Number of Pregnant Women</label>
-      <input type="number" id="pregnant" name="pregnant" required>
-      
-      <label for="pwd">Number of PWDs and With Medical Conditions</label>
-      <input type="number" id="pwd" name="pwd" required>
-
-      <input type="submit" value="Submit" class="submit-button">
-
-  
-  </div> 
-
-</section>
- 
-</section>
-
-
+                <input type="submit" value="Submit" class="submit-button">
+            </div> 
+        </section>
+    </section>
 </form>
-
 </section>
 
 <footer class="footer2">
-  <p>Ⓒ2025 Department of Social Welfare and Development. All Rights Reserved.</p>
+    <p>Ⓒ2025 Department of Social Welfare and Development. All Rights Reserved.</p>
 </footer>
- 
 
-  <script>
-      document.getElementById("Topbot").onclick = function() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-     };
+<script>
+    // Go to top button functionality
+    document.getElementById("Topbot").onclick = function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
-  document.addEventListener('DOMContentLoaded', function() {
-      const container = document.getElementById('family-members-container');
-      const addButton = document.getElementById('add-member-btn');
-      let memberCount = 0;
-      
-addButton.addEventListener('click', function() {
-  memberCount++;
-  
-  const newForm = document.createElement('div');
-  newForm.className = 'form-container';
-  newForm.innerHTML = `
-      <button class="delete-btn">X</button>
-      <h2>Family Member ${memberCount}</h2>
-      <label for="fullName-${memberCount}">Full Name</label>
-      <input type="text" id="fullName-${memberCount}" name="fullName[]" required>
+    // calc age frm bday
+    function calculateAge(birthdate) {
+        const today = new Date();
+        const birth = new Date(birthdate);
+        
+        // checking if bday is valid
+        if (isNaN(birth.getTime())) {
+            return '';
+        }
+        
+        let age = today.getFullYear() - birth.getFullYear();
+        const monthDiff = today.getMonth() - birth.getMonth();
+        
+        // if bday hasnt occured this yr
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+            age--;
+        }
+        
+        return age;
+    }
 
-      <label for="relation-${memberCount}">Relation to Head</label>
-      <input type="text" id="relation-${memberCount}" name="relation[]" required>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Age auto calc head fam
+        const birthdateField = document.getElementById('birthdate');
+        const ageField = document.getElementById('age');
+        
+        if (birthdateField && ageField) {
+            birthdateField.addEventListener('change', function() {
+                const calculatedAge = calculateAge(this.value);
+                ageField.value = calculatedAge;
+            });
+        }
 
-      <label for="age-${memberCount}">Age</label>
-      <input type="number" id="age-${memberCount}" name="age[]" required>
+        // Family members functionality
+        const container = document.getElementById('family-members-container');
+        const addButton = document.getElementById('add-member-btn');
+        let memberCount = 0;
+        
+        addButton.addEventListener('click', function() {
+            memberCount++;
+            
+            const newForm = document.createElement('div');
+            newForm.className = 'form-container';
+            newForm.innerHTML = `
+                <button type="button" class="delete-btn" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; float: right; cursor: pointer;">X</button>
+                <h2>Family Member ${memberCount}</h2>
+                <label for="fullName-${memberCount}">Full Name</label>
+                <input type="text" id="fullName-${memberCount}" name="fullName[]" required>
 
-      <label for="sex-${memberCount}">Sex</label>
-      <select id="sex-${memberCount}" name="sex[]" required>
-      <option value="" disabled selected>Choose</option>
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-      </select>
+                <label for="relation-${memberCount}">Relation to Head</label>
+                <input type="text" id="relation-${memberCount}" name="relation[]" required>
 
-      <label for="educ-${memberCount}">Educational Attainment</label>
-      <input type="text" id="educ-${memberCount}" name="educ[]" required>
+                <div class="sec0">
+                    <div class="sec01">
+                        <label for="birthdate-${memberCount}">Birthdate</label>
+                        <input type="date" id="birthdate-${memberCount}" name="birthdate[]">
+                    </div>
+                    <div class="sec02">
+                        <label for="age-${memberCount}">Age</label>
+                        <input type="number" id="age-${memberCount}" name="age[]" required readonly>
+                    </div>
+                    <div class="sec03">
+                        <label for="sex-${memberCount}">Sex</label>
+                        <select id="sex-${memberCount}" name="sex[]" required>
+                            <option value="" disabled selected>Choose</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                </div>
 
-      <label for="skills-${memberCount}">Occupational Skills</label>
-      <input type="text" id="skills-${memberCount}" name="skills[]" required>
+                <label for="educ-${memberCount}">Educational Attainment</label>
+                <input type="text" id="educ-${memberCount}" name="educ[]" required>
 
-      <label for="remarks-${memberCount}">Remarks</label>
-      <input type="text" id="remarks-${memberCount}" name="remarks[]" required>
-  `;
-  
-  
-  newForm.querySelector('.delete-btn').addEventListener('click', function() {
-      container.removeChild(newForm);
-      memberCount--;
-  });
-  
-  container.appendChild(newForm);
-  newForm.scrollIntoView({ behavior: 'smooth' });
-});
-  });
+                <label for="skills-${memberCount}">Occupational Skills</label>
+                <input type="text" id="skills-${memberCount}" name="skills[]" required>
+
+                <label for="remarks-${memberCount}">Remarks</label>
+                <input type="text" id="remarks-${memberCount}" name="remarks[]" required>
+            `;
+            
+            // Add delete functionality
+            newForm.querySelector('.delete-btn').addEventListener('click', function() {
+                container.removeChild(newForm);
+                memberCount--;
+            });
+            
+            // Add age calc for fam membr
+            const memberBirthdateField = newForm.querySelector(`#birthdate-${memberCount}`);
+            const memberAgeField = newForm.querySelector(`#age-${memberCount}`);
+            
+            memberBirthdateField.addEventListener('change', function() {
+                const calculatedAge = calculateAge(this.value);
+                memberAgeField.value = calculatedAge;
+            });
+            
+            container.appendChild(newForm);
+            newForm.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
 </script>
-
-
-
 
 </body>
 </html>
